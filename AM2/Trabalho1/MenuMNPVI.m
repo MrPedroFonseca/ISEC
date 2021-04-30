@@ -1,16 +1,16 @@
-%MENUMNPVI  Menu de Métodos Numéricos para um PVI
+%MENUMNPVI  Menu de MÃ©todos NumÃ©ricos para um PVI
 %   y = MenuMNPVI(f,a,b,n,y0)
-%   y'= f(t,y) com t=[a, b] e y(a)=y0 condição inicial  
+%   y'= f(t,y) com t=[a, b] e y(a)=y0 condiÃ§Ã£o inicial  
 %
 %INPUT:
-%   f - função do 2.º membro da Equação Diferencial
-%   [a, b] - extremos do intervalo da variável independente t
-%   n - número de subintervalos ou iterações do método
-%   y0 - condição inicial t=a -> y=y0
+%   f - funÃ§Ã£o do 2.Âº membro da EquaÃ§Ã£o Diferencial
+%   [a, b] - extremos do intervalo da variÃ¡vel independente t
+%   n - nÃºmero de subintervalos ou iteraÃ§Ãµes do mÃ©todo
+%   y0 - condiÃ§Ã£o inicial t=a -> y=y0
 %OUTPUT: 
-%   y - vector das soluções aproximações
+%   y - vector das soluÃ§Ãµes aproximaÃ§Ãµes
 %
-%   12/03/2020 - ArménioCorreia .: armenioc@isec.pt 
+%   12/03/2020 - ArmÃ©nioCorreia .: armenioc@isec.pt 
 
 function y=MenuMNPVI(f,a,b,n,y0,sExataP)
 
@@ -27,22 +27,22 @@ menuMNPVI = 1;
 while menuMNPVI~=5
     clc
     disp('--------------------------------------------------')
-    disp('           Métodos Numéricos para PVI             ')
+    disp('           MÃ©todos NumÃ©ricos para PVI             ')
     disp('--------------------------------------------------')
-    menuMNPVI=menu('Métodos Numéricos para PVI', ...
-                   'Método de Euler',...
-                   'Método RK2',...
-                   'Método RK4',...
-                   'Método ODE45',...
+    menuMNPVI=menu('MÃ©todos NumÃ©ricos para PVI', ...
+                   'MÃ©todo de Euler',...
+                   'MÃ©todo RK2',...
+                   'MÃ©todo RK4',...
+                   'MÃ©todo ODE45',...
                    'Todos',...
-                   'Saír');
+                   'SaÃ­r');
     switch menuMNPVI
         case 1
               yEuler=NEuler(f,a,b,n,y0);
               erroEuler=abs(sExataP-yEuler);
               h = (b-a)/n;
               t = a:h:b;
-              disp('-----------Solução aproximada do PVI - Euler ---------')
+              disp('-----------SoluÃ§Ã£o aproximada do PVI - Euler ---------')
               
                 %Mostrar valores
               disp('Euler')
@@ -52,7 +52,7 @@ while menuMNPVI~=5
               disp('Erro')
                 disp(erroEuler);
                 
-                %Gráfico
+                %GrÃ¡fico
               plot(t,yEuler,"-go");     %Euler
               hold on
               plot(t,sExataP,"-b");     %Exata
@@ -65,7 +65,7 @@ while menuMNPVI~=5
               erroRK2=abs(sExataP-yRK2);
               h = (b-a)/n;
               t = a:h:b;
-              disp('-----------Solução aproximada do PVI - RK2 ---------')
+              disp('-----------SoluÃ§Ã£o aproximada do PVI - RK2 ---------')
               
                 %Mostrar valores
               disp('RK2')
@@ -75,7 +75,7 @@ while menuMNPVI~=5
               disp('Erro')
                 disp(erroRK2);
                 
-                %Gráfico
+                %GrÃ¡fico
               plot(t,yRK2,"-go");     %Euler
               hold on
               plot(t,sExataP,"-b");     %Exata
@@ -88,7 +88,7 @@ while menuMNPVI~=5
               erroRK4=abs(sExataP-yRK4);
               h = (b-a)/n;
               t = a:h:b;
-              disp('-----------Solução aproximada do PVI - RK4 ---------')
+              disp('-----------SoluÃ§Ã£o aproximada do PVI - RK4 ---------')
               
                 %Mostrar valores
               disp('RK4')
@@ -98,7 +98,7 @@ while menuMNPVI~=5
               disp('Erro')
                 disp(erroRK4);
                 
-                %Gráfico
+                %GrÃ¡fico
               plot(t,yRK4,"-go");     %Euler
               hold on
               plot(t,sExataP,"-b");     %Exata
@@ -112,7 +112,7 @@ while menuMNPVI~=5
               erroODE45=abs(sExataP-yODE45');
               h = (b-a)/n;
               t = a:h:b;
-              disp('-----------Solução aproximada do PVI - ODE45 ---------')
+              disp('-----------SoluÃ§Ã£o aproximada do PVI - ODE45 ---------')
               
                 %Mostrar valores
               disp('ODE45')
@@ -122,7 +122,7 @@ while menuMNPVI~=5
               disp('Erro')
                 disp(erroODE45);
                 
-                %Gráfico
+                %GrÃ¡fico
               plot(t,yODE45',"-go");     %Euler
               hold on
               plot(t,sExataP,"-b");     %Exata
@@ -134,13 +134,13 @@ while menuMNPVI~=5
 %                 disp(yODE45');
 %               plot(t,yODE45,"-ro");
         case 5
-              yTodos=MNumericosPVI(f,a,b,n,y0);
+              yTodos=MNumericosPVI(f,a,b,n,y0,sExataP);
               disp(yTodos);
         case 6
             break;
     end
-    % disp('-----------Solução aproximada do PVI ---------')
+    % disp('-----------SoluÃ§Ã£o aproximada do PVI ---------')
     % disp(y)
-    input('Prima numa tecla para continuar »')
+    input('Prima numa tecla para continuar Â»')
 end
             
